@@ -15,7 +15,7 @@ module.exports = async function (context, req) {
         // Buffer?? https://developer.mozilla.org/en-US/docs/Web/API/Blob
 
         var base64data = Buffer.from(data).toString('base64')
-        // put what you want to turn into base64 inside "originaldata"
+        // Put what you want to turn into base64 inside "originaldata"
         // "originaldata" will be encoded in base64.
         return base64data
     }
