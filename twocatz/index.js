@@ -12,7 +12,7 @@ module.exports = async function (context, req) {
         });
         
         let data = await resp.arrayBuffer()
-        // We need to receive it as a buffer since this is an image we are receiving from the API
+        // Need to receive it as a buffer since this is an image we are receiving from the API
         // Buffer?? https://developer.mozilla.org/en-US/docs/Web/API/Blob
 
         var base64data = Buffer.from(data).toString('base64')
