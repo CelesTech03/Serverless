@@ -30,10 +30,8 @@ module.exports = async function (context, req) {
 }
 
 async function analyzeImage(img) {
-    //const subscriptionKey = process.env.SUBSCRIPTIONKEY;
-    const subscriptionKey = '3c5629de3c5b445a95e463c5a55a1f73';
-    //const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
-    const uriBase = 'https://celisfaceapi.cognitiveservices.azure.com/' + '/face/v1.0/detect';
+    const subscriptionKey = process.env.SUBSCRIPTIONKEY;
+    const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
     let params = new URLSearchParams({
         'returnFaceId': 'true',
         'returnFaceAttributes': 'emotion'  //FILL IN THIS LINE
