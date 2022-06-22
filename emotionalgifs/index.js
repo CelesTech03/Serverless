@@ -20,20 +20,23 @@ module.exports = async function (context, req) {
     let objects = Object.values(emotions);
     const main_emotion = Object.keys(emotions).find(key => emotions[key] === Math.max(...objects));
 
+    const API_KEY = process.env.GIFKEY;
+    const resp = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=' + API_KEY + '&limit=1&s=' + main_emotion);
+    const jsonData = await resp.json();
+
+    context.log(jsonData);
+
     context.res = {
-        body: {
-            main_emotion
-        }
+        body: jsonData.data.url
     };
     console.log(result)
     context.done(); 
 }
 
 async function analyzeImage(img) {
-    //const subscriptionKey = process.env.SUBSCRIPTIONKEY;
-    const subscriptionKey = '3c5629de3c5b445a95e463c5a55a1f73';
-    //const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
-    const uriBase = 'https://celisfaceapi.cognitiveservices.azure.com/' + '/face/v1.0/detect';
+    const subscriptionKey = process.env.SUBSCRIPTIONKEY;
+    const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
+
     let params = new URLSearchParams({
         'returnFaceId': 'true',
         'returnFaceAttributes': 'emotion'  //FILL IN THIS LINE
