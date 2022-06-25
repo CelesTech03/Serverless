@@ -47,7 +47,6 @@ module.exports = async function (context, req) {
     };
 
     const song = songs[id];
-
     const message = `We guessed you're part of this generation: ${id}! Happy listening! ${song}`;
 
     context.res = {
